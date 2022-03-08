@@ -27,6 +27,10 @@ class BookingType extends AbstractType
     {
         $builder
             ->add('startDate',TextType::class)
+            // ou alors plus simple pour se passer des datatransformers
+            // ->add('startDate',DateType::class,['widget'=>'single_text'],'html5'=>false)
+            // ce qui ne lancera pas le calendrier du navigateur
+
             ->add('endDate',TextType::class)
            // ->add('createdAt')
            // ->add('amount')

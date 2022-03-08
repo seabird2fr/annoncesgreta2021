@@ -116,10 +116,17 @@ private $passwordEncoder;
                     { 
 
                         $booking=new Booking();
-                        $booking->setCreatedAt(new \DateTime())
-                        ->setStartDate(new \DateTime("+ 5 days"))
-                        ->setEndDate(new \DateTime("+ 10 days"))
-                        ->setAmount($ad->getPrice()*5)
+                        $booking->setCreatedAt(new \DateTime());
+
+                        $datedebut=new \DateTime("+ 5 days");
+                        $datedebut->setTime(0,0,0); // on met à 00H00
+                        $booking->setStartDate($datedebut);
+
+                        $datefin=new \DateTime("+ 15 days");
+                        $datefin->setTime(0,0,0); // on met à 00H00
+                        $booking->setEndDate($datefin);
+
+                        $booking->setAmount($ad->getPrice()*10)
                         ->setComment("Commentaire réservation $k")
                         ->setBooker($user)
                         ->setAd($ad);

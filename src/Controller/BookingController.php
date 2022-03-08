@@ -35,6 +35,9 @@ class BookingController extends AbstractController
 
           $tous_les_timestamp=range($item->getStartDate()->getTimestamp(),$item->getEndDate()->getTimestamp(),24*60*60);      
 
+          //on enlève le dernière date de chaque réservation car elle est réservable
+          array_pop($tous_les_timestamp);
+
             $notAvailableDays = array_merge($notAvailableDays,$tous_les_timestamp);
 
           }
@@ -74,12 +77,15 @@ class BookingController extends AbstractController
                 // toutes les dates de la réservation
                 $tous_les_timestamp_choisies=range($booking->getStartDate()->getTimestamp(),$booking->getEndDate()->getTimestamp(),24*60*60);
 
+                // On supprime la dernière date car on ne reste pas la nuit
+                array_pop($tous_les_timestamp_choisies);
+
                 // 
                 $datesOK=true;
 
                 foreach ($tous_les_timestamp_choisies as $value) {
                    
-                   if (array_search($value,$notAvailableDays)) {$datesOK=false; break;   }
+                   if (array_search($value,$notAvailableDays)!==false) {$datesOK=false; break;   }
 
                 }
 

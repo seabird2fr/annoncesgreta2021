@@ -3,15 +3,16 @@
 namespace App\DataFixtures;
 
 use App\Entity\Ad;
-use App\Entity\Booking;
-use App\Entity\Comment;
-use App\Entity\Image;
 use App\Entity\Role;
 use App\Entity\User;
+use App\Entity\Image;
+use App\Entity\Booking;
+use App\Entity\Comment;
 use Cocur\Slugify\Slugify;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+//use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 
